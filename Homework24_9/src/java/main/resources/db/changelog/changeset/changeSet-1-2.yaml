@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Vladimir
+      changes:
+        - createTable:
+            tableName: category
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+                    autoIncrement: true
+              - column:
+                  name: title
+                  type: varchar(255)
+
+  - changeSet:
+      id: 2
+      author: Vladimir
+      changes:
+        - createTable:
+            tableName: news
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+                    autoIncrement: true
+              - column:
+                  name: title
+                  type: varchar(255)
+              - column:
+                  name: text
+                  type: varchar(255)
+              - column:
+                  name: time_stamp
+                  type: timestamp
+              - column:
+                  name: category_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_category
+                    references: category(id)
+
